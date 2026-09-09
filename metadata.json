@@ -1,0 +1,10 @@
+{
+  "name": "SwiftScan",
+  "description": "A premium, production-ready Scan and Go grocery web app with live camera barcode scanning, instant cart management, and seamless digital receipts.",
+  "requestFramePermissions": [
+    "camera"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>SwiftScan — Scan & Go Grocery</title>
+    <meta name="description" content="A premium, production-ready Scan and Go grocery web app with live camera barcode scanning, instant cart management, and seamless digital receipts." />
+    <meta property="og:title" content="SwiftScan — Scan & Go Grocery" />
+    <meta property="og:description" content="A premium, production-ready Scan and Go grocery web app with live camera barcode scanning, instant cart management, and seamless digital receipts." />
+    <meta property="og:type" content="website" />
+    <meta name="theme-color" content="#F9FAFB" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="SwiftScan" />
+    <link rel="icon" type="image/svg+xml" href="/icon.svg" />
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="apple-touch-icon" href="/icon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <script>
+      // Gracefully silence benign development Vite HMR WebSocket closing warnings
+      window.addEventListener('unhandledrejection', function (event) {
+        if (event.reason && (
+          String(event.reason).includes('WebSocket') ||
+          String(event.reason?.message || '').includes('WebSocket')
+        )) {
+          event.preventDefault();
+        }
+      });
+    </script>
+  </head>
+  <body class="bg-[#F9FAFB] text-slate-800 antialiased selection:bg-[#F2A68D]/30 font-['Plus_Jakarta_Sans',sans-serif]">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+
