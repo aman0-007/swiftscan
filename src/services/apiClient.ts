@@ -1,7 +1,7 @@
 import axios, { AxiosError, InternalAxiosRequestConfig } from 'axios';
 
 // Base URL: empty string forces same-origin requests through the Express server
-const API_BASE_URL = '';
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 /**
  * Axios client instance configured with defaults and interceptors
