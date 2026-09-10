@@ -2,7 +2,8 @@ import tailwindcss from '@tailwindcss/vite';
 import react from '@vitejs/plugin-react';
 import fs from 'fs';
 import path from 'path';
-import {defineConfig, Plugin} from 'vite';
+import { defineConfig, Plugin } from 'vite';
+import { VitePWA } from 'vite-plugin-pwa'; // <-- 1. IMPORT ADDED HERE
 
 // LINT.IfChange(aistudio_media_plugin)
 function aistudioMediaPlugin(): Plugin {
@@ -65,14 +66,44 @@ function aistudioMediaPlugin(): Plugin {
 // LINT.ThenChange(//depot/google3/java/com/google/alkali/boq/makersuite/applet_dev_service/templates/initializers/react_theme/vite.config.ts:aistudio_media_plugin)
 
 export default defineConfig(({ command }) => {
-  // 'serve' means npm run dev. 'build' means npm run build.
   const isDev = command === 'serve';
 
   return {
-    // Dynamically switch the base URL!
     base: isDev ? '/proxy/3000/' : '/',
 
-    plugins: [react(), tailwindcss(), aistudioMediaPlugin()],
+    plugins: [
+      react(), 
+      tailwindcss(), 
+      aistudioMediaPlugin(),
+      // <-- 2. PWA PLUGIN CONFIGURATION ADDED HERE
+      VitePWA({
+        registerType: 'autoUpdate', // This forces the PWA to update instantly!
+        workbox: {
+          globPatterns: ['**/*.{js,css,html,ico,png,svg}'],
+          cleanupOutdatedCaches: true, // Cleans up old cached files
+        },
+        manifest: {
+          name: 'SwiftScan',
+          short_name: 'SwiftScan',
+          description: 'Scan and Go Grocery App',
+          theme_color: '#F9FAFB',
+          background_color: '#F9FAFB',
+          display: 'standalone',
+          icons: [
+            {
+              src: 'pwa-192x192.png', // Make sure you have these in your /public folder
+              sizes: '192x192',
+              type: 'image/png'
+            },
+            {
+              src: 'pwa-512x512.png',
+              sizes: '512x512',
+              type: 'image/png'
+            }
+          ]
+        }
+      })
+    ],
 
     resolve: {
       alias: {
@@ -84,7 +115,7 @@ export default defineConfig(({ command }) => {
       host: '127.0.0.1',
       allowedHosts: ['code.sai9.tech'],
       port: 3000,
-      hmr: false, // You might want to remove this line later if you want auto-refresh on save!
+      hmr: false,
     },
   };
 });
