@@ -52,7 +52,7 @@ export class ErrorBoundary extends React.Component<Props, State> {
           </p>
           <button
             onClick={this.handleReset}
-            className="inline-flex items-center gap-2 py-2.5 px-5 rounded-2xl bg-[#8BA89F] hover:bg-[#78958c] text-white text-xs font-semibold shadow-sm transition active:scale-95"
+            className="inline-flex items-center gap-2 py-2.5 px-5 rounded-2xl bg-teal-700 hover:bg-teal-800 text-white text-xs font-bold shadow-md shadow-teal-900/20 transition active:scale-95 cursor-pointer"
           >
             <RefreshCw className="w-3.5 h-3.5" />
             <span>Reload View</span>

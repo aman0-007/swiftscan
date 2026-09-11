@@ -41,3 +41,17 @@ body::-webkit-scrollbar {
     scrollbar-width: none;
   }
 }
+
+/* ==========================================================================
+   Html5Qrcode Scanner Overlay Cleanup:
+   Completely remove the library's default white corner brackets/blocks and
+   shaded box borders so only the custom rounded reticle and overlay display.
+   ========================================================================== */
+#qr-shaded-region,
+#qr-shaded-region > div,
+#qr-shaded-region * {
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}

@@ -23,7 +23,7 @@ export const Logo: React.FC<LogoProps> = ({ size = 'md', showSubtitle = false })
   return (
     <div className="flex items-center gap-2.5 select-none" id="swiftscan-logo">
       <div
-        className={`${iconSizes[size]} rounded-2xl bg-gradient-to-br from-[#8BA89F] to-[#739288] p-1.5 flex items-center justify-center shadow-sm relative overflow-hidden group`}
+        className={`${iconSizes[size]} rounded-2xl bg-gradient-to-br from-[#0F766E] to-teal-800 p-1.5 flex items-center justify-center shadow-md shadow-teal-900/15 relative overflow-hidden group`}
       >
         <svg
           viewBox="0 0 24 24"
@@ -45,17 +45,17 @@ export const Logo: React.FC<LogoProps> = ({ size = 'md', showSubtitle = false })
           <path d="M14 8v8" strokeWidth="2.4" />
           <path d="M16.5 8v8" strokeWidth="1.6" />
         </svg>
-        {/* Subtle coral scan beam shimmer */}
-        <div className="absolute inset-x-0 h-[2px] bg-[#F2A68D] top-1/2 -translate-y-1/2 opacity-90 shadow-[0_0_8px_#F2A68D]" />
+        {/* Vibrant coral scan beam shimmer */}
+        <div className="absolute inset-x-0 h-[2px] bg-orange-500 top-1/2 -translate-y-1/2 opacity-95 shadow-[0_0_10px_#FF6B6B]" />
       </div>
 
       <div className="flex flex-col leading-tight">
-        <div className={`font-bold tracking-tight ${textSizes[size]} text-slate-800`}>
+        <div className={`font-bold tracking-tight ${textSizes[size]} text-slate-900`}>
           <span>Swift</span>
-          <span className="text-[#4A635B]">Scan</span>
+          <span className="text-[#0F766E]">Scan</span>
         </div>
         {showSubtitle && (
-          <span className="text-[11px] font-medium tracking-wider text-[#4A635B]/80 uppercase -mt-0.5">
+          <span className="text-[11px] font-semibold tracking-wider text-teal-800/80 uppercase -mt-0.5">
             Scan & Go Grocery
           </span>
         )}

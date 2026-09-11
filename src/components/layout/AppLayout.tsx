@@ -10,15 +10,15 @@ export const AppLayout: React.FC = () => {
   const hasSeenIntro = localStorage.getItem('hasSeenIntro') === 'true';
 
   if (!hasSeenIntro) {
-    return <Navigate to="/onboarding" replace />;
+    return <Navigate to="/app/onboarding" replace />;
   }
 
   if (!isAuthenticated) {
-    return <Navigate to="/login" replace />;
+    return <Navigate to="/app/login" replace />;
   }
 
   return (
-    <div className="min-h-screen bg-[#F9FAFB] flex flex-col relative text-slate-800 selection:bg-[#F2A68D]/30">
+    <div className="min-h-screen bg-slate-50 flex flex-col relative text-slate-900 selection:bg-orange-500/20">
       <OfflineBanner />
       <Header />
       <main className="flex-1 w-full">

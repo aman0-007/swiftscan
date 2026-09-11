@@ -68,7 +68,7 @@ export const PaymentModal: React.FC<PaymentModalProps> = ({
           particleCount: 70,
           spread: 60,
           origin: { y: 0.65 },
-          colors: ['#8BA89F', '#F2A68D', '#4A635B'],
+          colors: ['#0F766E', '#FF6B6B', '#14B8A6'],
         });
       } catch {
         // ignore
@@ -98,7 +98,7 @@ export const PaymentModal: React.FC<PaymentModalProps> = ({
         {/* Modal Header */}
         <div className="px-6 py-3 flex items-center justify-between border-b border-slate-100">
           <div className="flex items-center gap-2">
-            <span className="text-sm font-bold text-slate-800">
+            <span className="text-sm font-extrabold text-slate-900">
               {step === 'method' && 'Choose Payment Method'}
               {step === 'processing' && 'Authorizing Payment...'}
               {step === 'success' && 'Store Receipt'}
@@ -107,7 +107,7 @@ export const PaymentModal: React.FC<PaymentModalProps> = ({
           {step !== 'processing' && (
             <button
               onClick={onClose}
-              className="w-8 h-8 rounded-full flex items-center justify-center text-slate-400 hover:text-slate-600 hover:bg-slate-100 transition"
+              className="w-8 h-8 rounded-full flex items-center justify-center text-slate-400 hover:text-slate-600 hover:bg-slate-100 transition cursor-pointer"
             >
               <X className="w-4 h-4" />
             </button>
@@ -127,9 +127,9 @@ export const PaymentModal: React.FC<PaymentModalProps> = ({
                 className="space-y-4"
               >
                 {/* Total pill */}
-                <div className="p-4 rounded-2xl bg-[#F9FAFB] border border-slate-100 flex items-center justify-between">
-                  <div className="text-xs text-slate-500">Order Balance</div>
-                  <div className="text-xl font-bold text-slate-800">
+                <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 shadow-2xs flex items-center justify-between">
+                  <div className="text-xs text-slate-500 font-medium">Order Balance</div>
+                  <div className="text-xl font-extrabold text-slate-900">
                     ${totalAmount.toFixed(2)}
                   </div>
                 </div>
@@ -138,10 +138,10 @@ export const PaymentModal: React.FC<PaymentModalProps> = ({
                 <div className="space-y-2.5">
                   <button
                     onClick={() => setSelectedMethod('apple_pay')}
-                    className={`w-full p-3.5 rounded-2xl border flex items-center justify-between transition-all ${
+                    className={`w-full p-3.5 rounded-2xl border flex items-center justify-between transition-all cursor-pointer ${
                       selectedMethod === 'apple_pay'
-                        ? 'border-[#8BA89F] bg-[#8BA89F]/10 ring-1 ring-[#8BA89F]'
-                        : 'border-slate-200 hover:border-slate-300'
+                        ? 'border-teal-600 bg-teal-50/60 ring-2 ring-teal-600/20 shadow-xs'
+                        : 'border-slate-200 hover:border-teal-200'
                     }`}
                   >
                     <div className="flex items-center gap-3">
@@ -149,21 +149,21 @@ export const PaymentModal: React.FC<PaymentModalProps> = ({
                         Pay
                       </div>
                       <div className="text-left leading-tight">
-                        <span className="text-xs font-bold text-slate-800">Apple Pay</span>
+                        <span className="text-xs font-bold text-slate-900">Apple Pay</span>
                         <p className="text-[11px] text-slate-400">Default device wallet</p>
                       </div>
                     </div>
                     {selectedMethod === 'apple_pay' && (
-                      <Check className="w-4 h-4 text-[#4A635B]" />
+                      <Check className="w-4 h-4 text-teal-700 stroke-[2.5]" />
                     )}
                   </button>
 
                   <button
                     onClick={() => setSelectedMethod('card')}
-                    className={`w-full p-3.5 rounded-2xl border flex items-center justify-between transition-all ${
+                    className={`w-full p-3.5 rounded-2xl border flex items-center justify-between transition-all cursor-pointer ${
                       selectedMethod === 'card'
-                        ? 'border-[#8BA89F] bg-[#8BA89F]/10 ring-1 ring-[#8BA89F]'
-                        : 'border-slate-200 hover:border-slate-300'
+                        ? 'border-teal-600 bg-teal-50/60 ring-2 ring-teal-600/20 shadow-xs'
+                        : 'border-slate-200 hover:border-teal-200'
                     }`}
                   >
                     <div className="flex items-center gap-3">
@@ -171,14 +171,14 @@ export const PaymentModal: React.FC<PaymentModalProps> = ({
                         <CreditCard className="w-4 h-4" />
                       </div>
                       <div className="text-left leading-tight">
-                        <span className="text-xs font-bold text-slate-800">
+                        <span className="text-xs font-bold text-slate-900">
                           Debit / Credit Card
                         </span>
                         <p className="text-[11px] text-slate-400">Visa ending in •••• 4092</p>
                       </div>
                     </div>
                     {selectedMethod === 'card' && (
-                      <Check className="w-4 h-4 text-[#4A635B]" />
+                      <Check className="w-4 h-4 text-teal-700 stroke-[2.5]" />
                     )}
                   </button>
                 </div>
@@ -187,7 +187,7 @@ export const PaymentModal: React.FC<PaymentModalProps> = ({
                   <button
                     id="confirm-pay-btn"
                     onClick={handleStartPayment}
-                    className="w-full py-3.5 px-6 rounded-3xl bg-[#F2A68D] hover:bg-[#e8957a] text-white font-semibold text-sm shadow-sm transition active:scale-[0.98] flex items-center justify-center gap-2 cursor-pointer"
+                    className="w-full py-4 px-6 rounded-3xl bg-orange-500 hover:bg-orange-600 text-white font-bold text-sm shadow-md shadow-orange-500/25 transition active:scale-[0.98] flex items-center justify-center gap-2 cursor-pointer"
                   >
                     <ShieldCheck className="w-4 h-4" />
                     <span>Authorize & Pay ${totalAmount.toFixed(2)}</span>
@@ -209,13 +209,13 @@ export const PaymentModal: React.FC<PaymentModalProps> = ({
                 exit={{ opacity: 0, scale: 0.95 }}
                 className="py-12 flex flex-col items-center justify-center text-center"
               >
-                <div className="w-16 h-16 rounded-full bg-[#8BA89F]/15 flex items-center justify-center text-[#4A635B] mb-4">
+                <div className="w-16 h-16 rounded-2xl bg-teal-50 border border-teal-100 flex items-center justify-center text-teal-700 mb-4 shadow-xs">
                   <Loader2 className="w-8 h-8 animate-spin" />
                 </div>
-                <h3 className="text-base font-bold text-slate-800">
+                <h3 className="text-base font-extrabold text-slate-900">
                   Processing Secure Payment...
                 </h3>
-                <p className="text-xs text-slate-400 mt-1 max-w-xs">
+                <p className="text-xs text-slate-500 mt-1 max-w-xs">
                   Communicating with terminal and generating your instant digital exit pass.
                 </p>
               </motion.div>
@@ -236,29 +236,29 @@ export const PaymentModal: React.FC<PaymentModalProps> = ({
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
                     transition={{ type: 'spring', stiffness: 260, damping: 20 }}
-                    className="w-14 h-14 rounded-full bg-[#8BA89F] text-white flex items-center justify-center shadow-md mb-2"
+                    className="w-14 h-14 rounded-2xl bg-teal-700 text-white flex items-center justify-center shadow-lg shadow-teal-900/20 mb-2"
                   >
                     <CheckCircle className="w-8 h-8 stroke-[2.5]" />
                   </motion.div>
-                  <h3 className="text-lg font-bold text-slate-800">Payment Successful!</h3>
+                  <h3 className="text-lg font-extrabold text-slate-900">Payment Successful!</h3>
                   <p className="text-xs text-slate-500">
                     Order {createdOrder.id} • Saved to History
                   </p>
                 </div>
 
                 {/* Digital Receipt Card */}
-                <div className="p-4 rounded-3xl bg-[#F9FAFB] border border-slate-200/80 shadow-sm relative overflow-hidden text-left">
+                <div className="p-4 rounded-3xl bg-slate-50 border border-slate-200/80 shadow-md shadow-teal-900/5 relative overflow-hidden text-left">
                   {/* Jagged top line decorative */}
                   <div className="flex justify-between items-center pb-2 border-b border-dashed border-slate-300">
                     <div>
-                      <span className="text-xs font-bold text-slate-800">
+                      <span className="text-xs font-bold text-slate-900">
                         {createdOrder.storeName || 'SwiftScan Market'}
                       </span>
                       <p className="text-[10px] text-slate-400">
                         {new Date(createdOrder.createdAt).toLocaleString()}
                       </p>
                     </div>
-                    <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-[#8BA89F]/20 text-[#4A635B]">
+                    <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-teal-50 text-teal-800 border border-teal-200/60">
                       PAID
                     </span>
                   </div>
@@ -288,14 +288,14 @@ export const PaymentModal: React.FC<PaymentModalProps> = ({
                       <span>Sales Tax (8.25%)</span>
                       <span>${taxAmount.toFixed(2)}</span>
                     </div>
-                    <div className="flex justify-between font-bold text-sm text-slate-800 pt-1 border-t border-slate-200">
+                    <div className="flex justify-between font-bold text-sm text-slate-900 pt-1 border-t border-slate-200">
                       <span>Total Paid</span>
-                      <span className="text-[#4A635B]">${createdOrder.totalAmount.toFixed(2)}</span>
+                      <span className="text-teal-700 font-extrabold text-base">${createdOrder.totalAmount.toFixed(2)}</span>
                     </div>
                   </div>
 
                   {/* Store Exit Barcode Pass */}
-                  <div className="mt-4 p-3 bg-white rounded-2xl border border-slate-200/80 flex flex-col items-center justify-center">
+                  <div className="mt-4 p-3 bg-white rounded-2xl border border-slate-200/80 flex flex-col items-center justify-center shadow-2xs">
                     <div className="flex gap-1 h-8 items-center justify-center">
                       <div className="w-1.5 h-full bg-slate-900" />
                       <div className="w-1 h-full bg-slate-900" />
@@ -317,7 +317,7 @@ export const PaymentModal: React.FC<PaymentModalProps> = ({
                 <div className="pt-2">
                   <button
                     onClick={onClose}
-                    className="w-full py-3.5 px-6 rounded-3xl bg-[#8BA89F] hover:bg-[#77948a] text-white font-semibold text-xs shadow-sm transition active:scale-[0.98]"
+                    className="w-full py-4 px-6 rounded-3xl bg-teal-700 hover:bg-teal-800 text-white font-bold text-xs shadow-md shadow-teal-900/20 transition active:scale-[0.98] cursor-pointer"
                   >
                     Done & Exit Store
                   </button>

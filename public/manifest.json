@@ -3,7 +3,7 @@
   "name": "SwiftScan Grocery",
   "short_name": "SwiftScan",
   "description": "Smart scan & go checkout for modern grocery shopping",
-  "start_url": "/",
+  "start_url": "/app",
   "scope": "/",
   "display": "standalone",
   "background_color": "#F9FAFB",

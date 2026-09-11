@@ -10,13 +10,13 @@ export const Header: React.FC = () => {
   const navigate = useNavigate();
 
   return (
-    <header className="sticky top-0 z-40 w-full bg-[#F9FAFB]/90 backdrop-blur-md border-b border-slate-200/50">
+    <header className="sticky top-0 z-40 w-full bg-slate-50/90 backdrop-blur-md border-b border-slate-200/80">
       <div className="max-w-md mx-auto px-4 h-16 flex items-center justify-between">
         {/* Brand Logo */}
         <div className="flex items-center gap-3">
           <Logo size="sm" />
-          <div className="hidden min-[380px]:flex items-center gap-1 text-[11px] font-medium text-[#4A635B] bg-[#8BA89F]/15 px-2 py-0.5 rounded-full">
-            <MapPin className="w-3 h-3 text-[#4A635B]" />
+          <div className="hidden min-[380px]:flex items-center gap-1.5 text-[11px] font-semibold text-teal-800 bg-teal-50 border border-teal-200/60 px-2.5 py-0.5 rounded-full shadow-2xs">
+            <MapPin className="w-3 h-3 text-teal-700" />
             <span className="truncate max-w-[90px]">Pine & 4th</span>
           </div>
         </div>
@@ -27,14 +27,14 @@ export const Header: React.FC = () => {
           
           <button
             id="header-profile-btn"
-            onClick={() => navigate('/profile')}
-            className="flex items-center gap-1.5 p-1 pl-1.5 rounded-full bg-white hover:bg-slate-50 border border-slate-100 shadow-sm transition-all active:scale-95 group"
+            onClick={() => navigate('/app/profile')}
+            className="flex items-center gap-1.5 p-1 pl-2 rounded-full bg-white hover:bg-slate-50 border border-slate-200/70 shadow-xs transition-all active:scale-95 group cursor-pointer"
             title="View Profile & Settings"
           >
-            <span className="text-xs font-medium text-slate-700 hidden sm:inline group-hover:text-slate-900">
+            <span className="text-xs font-semibold text-slate-700 hidden sm:inline group-hover:text-slate-900">
               {user?.name?.split(' ')[0] || 'Member'}
             </span>
-            <div className="w-8 h-8 rounded-full overflow-hidden bg-[#8BA89F]/20 border border-[#8BA89F]/30 flex items-center justify-center text-xs font-bold text-[#4A635B]">
+            <div className="w-8 h-8 rounded-full overflow-hidden bg-teal-50 border border-teal-200 flex items-center justify-center text-xs font-bold text-teal-800">
               {user?.avatar ? (
                 <img
                   src={user.avatar}

@@ -83,11 +83,11 @@ export const OrdersView: React.FC = () => {
           ))}
         </div>
       ) : orders.length === 0 ? (
-        <div className="p-8 rounded-3xl bg-white border border-slate-100 shadow-sm text-center my-6">
-          <div className="w-14 h-14 rounded-full bg-[#8BA89F]/15 text-[#4A635B] flex items-center justify-center mx-auto mb-3">
+        <div className="p-8 rounded-3xl bg-white border border-slate-200/80 shadow-md shadow-teal-900/5 text-center my-6">
+          <div className="w-14 h-14 rounded-2xl bg-teal-50 text-teal-700 border border-teal-100 flex items-center justify-center mx-auto mb-3">
             <Receipt className="w-7 h-7 stroke-[1.8]" />
           </div>
-          <h2 className="text-base font-bold text-slate-800">No Past Orders Yet</h2>
+          <h2 className="text-base font-bold text-slate-900">No Past Orders Yet</h2>
           <p className="text-xs text-slate-500 mt-1 max-w-xs mx-auto">
             Your completed grocery checkouts and itemized receipts will show up here.
           </p>
@@ -111,23 +111,23 @@ export const OrdersView: React.FC = () => {
             return (
               <div
                 key={order.id}
-                className="rounded-3xl bg-white border border-slate-100 shadow-sm overflow-hidden transition-all"
+                className="rounded-3xl bg-white border border-slate-200/80 shadow-md shadow-teal-900/5 overflow-hidden transition-all"
               >
                 {/* Collapsible Card Header */}
                 <button
                   onClick={() => toggleExpand(order.id)}
-                  className="w-full p-4 flex items-center justify-between text-left hover:bg-slate-50/70 transition-colors"
+                  className="w-full p-4 flex items-center justify-between text-left hover:bg-slate-50/70 transition-colors cursor-pointer"
                 >
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-2xl bg-[#8BA89F]/15 text-[#4A635B] flex items-center justify-center font-bold text-xs shrink-0">
+                    <div className="w-10 h-10 rounded-2xl bg-teal-50 text-teal-700 border border-teal-100 flex items-center justify-center font-bold text-xs shrink-0">
                       <Receipt className="w-5 h-5 stroke-[2]" />
                     </div>
                     <div className="leading-tight">
                       <div className="flex items-center gap-2">
-                        <span className="text-xs font-bold text-slate-800">
+                        <span className="text-xs font-bold text-slate-900">
                           {order.id}
                         </span>
-                        <span className="px-2 py-0.5 rounded-full text-[9px] font-semibold bg-emerald-50 text-emerald-700 border border-emerald-100">
+                        <span className="px-2 py-0.5 rounded-full text-[9px] font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200/60">
                           {order.status}
                         </span>
                       </div>
@@ -143,7 +143,7 @@ export const OrdersView: React.FC = () => {
                   </div>
 
                   <div className="flex items-center gap-2">
-                    <span className="text-sm font-bold text-[#4A635B]">
+                    <span className="text-sm font-bold text-teal-700">
                       ${order.totalAmount.toFixed(2)}
                     </span>
                     <div className="text-slate-400">
@@ -164,16 +164,16 @@ export const OrdersView: React.FC = () => {
                       animate={{ height: 'auto', opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
                       transition={{ duration: 0.25 }}
-                      className="border-t border-dashed border-slate-200 bg-[#F9FAFB]/70 px-4 py-3 text-xs"
+                      className="border-t border-dashed border-slate-200 bg-slate-50/80 px-4 py-3 text-xs"
                     >
                       {/* Store & Payment metadata */}
                       <div className="flex items-center justify-between pb-2.5 text-[11px] text-slate-500 border-b border-slate-200/60">
                         <span className="flex items-center gap-1">
-                          <Store className="w-3 h-3 text-[#8BA89F]" />
+                          <Store className="w-3 h-3 text-teal-600" />
                           {order.storeName || 'SwiftScan Market — Pine & 4th'}
                         </span>
                         <span className="flex items-center gap-1">
-                          <CreditCard className="w-3 h-3 text-[#8BA89F]" />
+                          <CreditCard className="w-3 h-3 text-teal-600" />
                           {order.paymentMethod || 'Apple Pay'}
                         </span>
                       </div>
@@ -204,9 +204,9 @@ export const OrdersView: React.FC = () => {
                       </div>
 
                       {/* Total Bar */}
-                      <div className="pt-2 border-t border-dashed border-slate-200 flex justify-between items-center font-bold text-slate-800">
+                      <div className="pt-2 border-t border-dashed border-slate-200 flex justify-between items-center font-bold text-slate-900">
                         <span>Total Paid</span>
-                        <span className="text-sm text-[#4A635B]">
+                        <span className="text-sm font-extrabold text-teal-700">
                           ${order.totalAmount.toFixed(2)}
                         </span>
                       </div>

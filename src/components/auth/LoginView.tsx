@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Mail, Lock, Eye, EyeOff, Loader2, Sparkles, ShieldCheck } from 'lucide-react';
+import { Mail, Lock, Eye, EyeOff, Loader2, ShieldCheck } from 'lucide-react';
 import { Logo } from '../common/Logo';
 import { useAuth } from '../../context/AuthContext';
 
@@ -17,7 +17,7 @@ export const LoginView: React.FC = () => {
     if (!email || !password) return;
     const success = await login(email, password);
     if (success) {
-      navigate('/scanner', { replace: true });
+      navigate('/app/scanner', { replace: true });
     }
   };
 
@@ -28,12 +28,12 @@ export const LoginView: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen w-full bg-[#F9FAFB] flex flex-col justify-between p-6 max-w-md mx-auto">
+    <div className="min-h-screen w-full bg-slate-50 flex flex-col justify-between p-6 max-w-md mx-auto">
       {/* Top Header */}
       <div className="pt-4 flex items-center justify-between">
         <Logo size="md" showSubtitle />
-        <span className="text-[11px] font-semibold text-[#4A635B] bg-[#8BA89F]/15 px-2.5 py-1 rounded-full flex items-center gap-1">
-          <ShieldCheck className="w-3 h-3 text-[#4A635B]" />
+        <span className="text-[11px] font-semibold text-teal-800 bg-teal-50 border border-teal-200/60 px-2.5 py-1 rounded-full flex items-center gap-1 shadow-xs">
+          <ShieldCheck className="w-3 h-3 text-teal-700" />
           <span>v2.4 Secure</span>
         </span>
       </div>
@@ -41,7 +41,7 @@ export const LoginView: React.FC = () => {
       {/* Main Login Card */}
       <div className="my-auto py-6">
         <div className="mb-6 text-left">
-          <h1 className="text-2xl font-bold tracking-tight text-slate-800">
+          <h1 className="text-2xl font-extrabold tracking-tight text-slate-900">
             Welcome back
           </h1>
           <p className="text-xs text-slate-500 mt-1">
@@ -64,7 +64,7 @@ export const LoginView: React.FC = () => {
               Email Address
             </label>
             <div className="relative">
-              <Mail className="w-4 h-4 text-[#8BA89F] absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+              <Mail className="w-4 h-4 text-teal-600 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
               <input
                 id="login-email-input"
                 type="email"
@@ -75,7 +75,7 @@ export const LoginView: React.FC = () => {
                   setEmail(e.target.value);
                 }}
                 placeholder="name@example.com"
-                className="w-full pl-10 pr-4 py-3 rounded-2xl bg-white border border-slate-200 text-sm text-slate-800 placeholder:text-slate-400 focus:outline-none focus:border-[#8BA89F] focus:ring-2 focus:ring-[#8BA89F]/20 transition-all shadow-sm"
+                className="w-full pl-10 pr-4 py-3 rounded-2xl bg-white border border-slate-200 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-teal-600 focus:ring-2 focus:ring-teal-500/20 transition-all shadow-xs"
               />
             </div>
           </div>
@@ -89,13 +89,13 @@ export const LoginView: React.FC = () => {
               <button
                 type="button"
                 onClick={() => fillDemoAccount('shopper@scanandgo.com', 'hashed_pw_shopper')}
-                className="text-[11px] font-medium text-[#4A635B] hover:underline"
+                className="text-[11px] font-semibold text-teal-700 hover:text-teal-800 hover:underline cursor-pointer"
               >
                 Reset default credentials
               </button>
             </div>
             <div className="relative">
-              <Lock className="w-4 h-4 text-[#8BA89F] absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+              <Lock className="w-4 h-4 text-teal-600 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
               <input
                 id="login-password-input"
                 type={showPassword ? 'text' : 'password'}
@@ -106,12 +106,12 @@ export const LoginView: React.FC = () => {
                   setPassword(e.target.value);
                 }}
                 placeholder="••••••••"
-                className="w-full pl-10 pr-10 py-3 rounded-2xl bg-white border border-slate-200 text-sm text-slate-800 placeholder:text-slate-400 focus:outline-none focus:border-[#8BA89F] focus:ring-2 focus:ring-[#8BA89F]/20 transition-all shadow-sm"
+                className="w-full pl-10 pr-10 py-3 rounded-2xl bg-white border border-slate-200 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-teal-600 focus:ring-2 focus:ring-teal-500/20 transition-all shadow-xs"
               />
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 p-1"
+                className="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 p-1 cursor-pointer"
               >
                 {showPassword ? (
                   <EyeOff className="w-4 h-4" />
@@ -127,7 +127,7 @@ export const LoginView: React.FC = () => {
             id="login-submit-btn"
             type="submit"
             disabled={isLoading}
-            className="w-full mt-2 py-3.5 px-6 rounded-3xl bg-[#F2A68D] hover:bg-[#e8957a] text-white font-semibold text-sm shadow-sm transition-all duration-200 active:scale-[0.98] disabled:opacity-60 flex items-center justify-center gap-2 cursor-pointer"
+            className="w-full mt-2 py-4 px-6 rounded-3xl bg-orange-500 hover:bg-orange-600 text-white font-bold text-sm shadow-md shadow-orange-500/25 transition-all duration-200 active:scale-[0.98] disabled:opacity-60 flex items-center justify-center gap-2 cursor-pointer"
           >
             {isLoading ? (
               <>
@@ -141,26 +141,25 @@ export const LoginView: React.FC = () => {
         </form>
 
         {/* Demo Credentials Helper Pill */}
-        <div className="mt-6 p-3.5 rounded-2xl bg-[#8BA89F]/10 border border-[#8BA89F]/20 text-left">
-          <div className="flex items-center gap-1.5 text-xs font-semibold text-[#4A635B] mb-1.5">
-            <Sparkles className="w-3.5 h-3.5 text-[#4A635B]" />
+        <div className="mt-6 p-4 rounded-2xl bg-teal-50/70 border border-teal-200/70 text-left shadow-2xs">
+          <div className="flex items-center text-xs font-bold text-teal-900 mb-1.5">
             <span>1-Click Demo Login</span>
           </div>
-          <p className="text-[11px] text-slate-600 mb-2 leading-relaxed">
+          <p className="text-[11px] text-slate-600 mb-2.5 leading-relaxed">
             Pre-loaded with sample member account for immediate testing.
           </p>
           <div className="flex flex-wrap gap-1.5">
             <button
               type="button"
               onClick={() => fillDemoAccount('shopper@scanandgo.com', 'hashed_pw_shopper')}
-              className="text-[11px] px-2.5 py-1 rounded-xl bg-white border border-[#8BA89F]/30 text-slate-700 hover:bg-slate-50 font-medium active:scale-95 transition"
+              className="text-[11px] px-2.5 py-1 rounded-xl bg-white border border-teal-200 text-slate-800 hover:bg-teal-50 font-medium active:scale-95 transition shadow-2xs cursor-pointer"
             >
               Default Shopper
             </button>
             <button
               type="button"
               onClick={() => fillDemoAccount('sarah.miller@swiftscan.co', 'swiftpass2026')}
-              className="text-[11px] px-2.5 py-1 rounded-xl bg-white border border-[#8BA89F]/30 text-slate-700 hover:bg-slate-50 font-medium active:scale-95 transition"
+              className="text-[11px] px-2.5 py-1 rounded-xl bg-white border border-teal-200 text-slate-800 hover:bg-teal-50 font-medium active:scale-95 transition shadow-2xs cursor-pointer"
             >
               Sarah (Member)
             </button>

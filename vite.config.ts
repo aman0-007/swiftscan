@@ -86,23 +86,21 @@ export default defineConfig(({ command }) => {
           name: 'SwiftScan',
           short_name: 'SwiftScan',
           description: 'Scan and Go Grocery App',
-          theme_color: '#F9FAFB',
-          background_color: '#F9FAFB',
+          theme_color: '#0F766E',
+          background_color: '#0F766E',
           display: 'standalone',
+          start_url: '/app',
+          scope: '/',
           icons: [
             {
-              src: 'pwa-192x192.png', // Make sure you have these in your /public folder
-              sizes: '192x192',
-              type: 'image/png'
+              src: '/icon.svg',
+              sizes: '192x192 512x512',
+              type: 'image/svg+xml',
+              purpose: 'any',
             },
-            {
-              src: 'pwa-512x512.png',
-              sizes: '512x512',
-              type: 'image/png'
-            }
-          ]
-        }
-      })
+          ],
+        },
+      }),
     ],
 
     resolve: {
@@ -112,8 +110,8 @@ export default defineConfig(({ command }) => {
     },
 
     server: {
-      host: '127.0.0.1',
-      allowedHosts: ['code.sai9.tech'],
+      host: '0.0.0.0',
+      allowedHosts: true,
       port: 3000,
       hmr: false,
     },
